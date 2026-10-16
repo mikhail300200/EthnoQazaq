@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="EthnoQazaq — Маңғыстаудың табиғаты, мәдениеті, дәмі, шеберлері мен сапар бағыттары.">
+<meta name="theme-color" content="#0d4e5f">
+<title>EthnoQazaq — Маңғыстау мұрасы</title>
+<link rel="stylesheet" href="assets/leaflet.css">
+<link rel="stylesheet" href="style.css">
+<script defer src="assets/leaflet.js"></script>
+<script defer src="content.js"></script>
+<script defer src="app.js"></script>
+<script defer src="assistant.js"></script>
+<script defer src="music.js"></script>
+<script defer src="i18n.js"></script>
+</head>
+<body>
+<a class="skip" href="#atlas">Мазмұнға өту</a>
+<header class="site-header">
+  <a class="brand" href="#home"><img src="assets/brand-ornament.png" alt=""><span>EthnoQazaq<small>МАҢҒЫСТАУ МҰРАСЫ</small></span></a>
+  <nav aria-label="Негізгі мәзір"><a href="#atlas">Мұра картасы</a><a href="#live">Тірі мәдениет</a><a href="#food">Этнодәм</a><a href="#market">Шеберлер</a><a href="#tours">Турлар</a></nav>
+  <div class="lang-switcher" aria-label="Тілді таңдау"><button data-site-lang="kk" class="active">ҚАЗ</button><button data-site-lang="ru">РУС</button><button data-site-lang="en">ENG</button></div>
+  <a class="button small" href="#planner">Саяхатымды жоспарлау →</a>
+</header>
+<div class="project-credit"><strong>Қойлыбай Мирас Мақсатұлының жобасы негізінде · 2026</strong></div>
+<main>
+<section class="hero wrap" id="home">
+  <div class="hero-copy"><span class="eyebrow">МАҢҒЫСТАУ · МӘДЕНИЕТКЕ САЯХАТ</span><h1>EthnoQazaq</h1><h2>Ұлы далаға жол.<br>Ұлттық мұраға жақын.</h2><p>Табиғатты зертте. Дәстүрді таны.<br>Өзіңе арналған сапар бағытын құрастыр.</p><a class="button" href="#atlas">Саяхатқа кірісу →</a></div>
+  <img src="assets/aktau-night-hero.png" alt="Ақтау қаласының түнгі көрінісі" fetchpriority="high">
+</section>
+
+<div class="ornament"><img src="assets/ornament-gold.png" alt=""></div>
+<section class="section wrap" id="atlas">
+  <div class="section-head"><div><span class="eyebrow">01 / ӨҢІРДІ ЗЕРТТЕ</span><h2>Маңғыстау. Шексіз сұлулық мекені.</h2></div><p>Орынды таңда, тарихын оқы.<br>Ұнаған жеріңді картадан зертте.</p></div>
+  <div class="atlas-toolbar"><div class="tabs"><button class="active" data-filter="all">Барлығы</button><button data-filter="nature">Табиғат</button><button data-filter="heritage">Киелі мұра</button></div><label class="search"><input id="search" type="search" placeholder="Орын атауын іздеу…"></label></div>
+  <div class="atlas"><div class="map-frame"><div id="map"></div><div class="map-tag">Маңғыстау облысы</div></div><div class="places-panel"><div class="list-head"><span id="result-count">6 нысан</span><span>Зерттеуге дайын</span></div><div id="place-list"></div></div></div>
+</section>
+
+<div class="ornament"><img src="assets/ornament-gold.png" alt=""></div>
+<section class="live-section" id="live"><div class="wrap section">
+  <div class="section-head light"><div><span class="eyebrow">02 / ТІРІ МӘДЕНИЕТ</span><h2>Дәстүрді бейне арқылы таны.</h2></div><p>Баспана, қолөнер, дастарқан, салт, ойын және күй — бәрі бір кеңістікте.</p></div>
+  <div class="live-feature">
+    <div class="live-feature-photo"><img src="assets/bozzhyra-01.png" alt="Бозжыраның панорамалық көрінісі"></div>
+    <div class="live-feature-copy"><span class="eyebrow">МАҢҒЫСТАУ МҰРАСЫ</span><h3>Бозжыра</h3><p>Бозжыраның кең панорамасын көріп, Маңғыстаудың табиғи болмысын сезініңіз.</p></div>
+  </div>
+  <div class="video-grid culture-grid">
+    <button class="culture-card" type="button" data-title="Қолөнер шеберханасы" data-info="Қазақ қолөнерінде ою, киіз, кесте және шебердің қол еңбегі ұрпақтан ұрпаққа жалғасып келеді." data-video="Q0eBB_1ADIA"><img src="assets/craft.jpg" alt="Қолөнер шеберханасы"><span class="culture-card-body"><strong>Қолөнер шеберханасы</strong><small>Ою, киіз және шебер қолының ізі.</small><em>Толығырақ көру →</em></span></button>
+    <button class="culture-card" type="button" data-title="Ұлттық асхана" data-info="Ұлттық дастарқан — қонақжайлық пен берекенің белгісі. Дәстүрлі тағамдардың әрқайсысының өзіндік орны мен мәні бар." data-video="9NE8LQRFIog"><img src="assets/food.jpg" alt="Ұлттық асхана"><span class="culture-card-body"><strong>Ұлттық асхана</strong><small>Дастарқан мәдениеті мен ұлттық дәмдер.</small><em>Толығырақ көру →</em></span></button>
+    <button class="culture-card" type="button" data-title="Киіз үй құпиясы" data-info="Киіз үй — көшпелі өмір салтына бейімделген баспана. Кереге, уық және шаңырақ оның негізгі құрылымын құрайды." data-video="1jAebuZ9rdM"><img src="assets/yurt-build.jpg" alt="Киіз үй құпиясы"><span class="culture-card-body"><strong>Киіз үй құпиясы</strong><small>Кереге, уық, шаңырақ — көшпелі үйдің жүйесі.</small><em>Толығырақ көру →</em></span></button>
+    <button class="culture-card" type="button" data-title="Салт-дәстүр шежіресі" data-info="Қазақтың салт-дәстүрлері отбасы, үлкенді құрметтеу, қонақ күту және ұрпақ сабақтастығымен тығыз байланысты." data-video="MV6QYZfy0_Q"><img src="assets/tradition.jpg" alt="Салт-дәстүр шежіресі"><span class="culture-card-body"><strong>Салт-дәстүр шежіресі</strong><small>Отбасылық ғұрыптар мен ұрпақ сабақтастығы.</small><em>Толығырақ көру →</em></span></button>
+    <button class="culture-card" type="button" data-title="Ұлттық ойындар" data-info="Асық, тоғызқұмалақ және басқа ұлттық ойындар ептілікті, ойлауды, есепті және ортақ ойын мәдениетін дамытады." data-video="0dIFxFDkc1I"><img src="assets/games.jpg" alt="Ұлттық ойындар"><span class="culture-card-body"><strong>Ұлттық ойындар</strong><small>Ептілік, есеп және ортақ ойын мәдениеті.</small><em>Толығырақ көру →</em></span></button>
+    <button class="culture-card" type="button" data-title="Домбыраның үні" data-info="Домбыра — қазақтың рухани мәдениетінің айрықша белгісі. Күй арқылы тарихи оқиға, көңіл күй және халық жадындағы әңгімелер жеткізіледі." data-video="EoRbSLtPN4k"><img src="assets/interior.jpg" alt="Домбыраның үні"><span class="culture-card-body"><strong>Домбыраның үні</strong><small>Күй мен домбыра арқылы жеткен ұлттық үн.</small><em>Толығырақ көру →</em></span></button>
+  </div>
+</div></section>
+
+<div class="ornament"><img src="assets/ornament-gold.png" alt=""></div>
+<section class="section wrap food-section" id="food">
+  <div class="section-head"><div><span class="eyebrow">03 / ЭТНОДӘМ</span><h2>Дәм мен дәстүр.</h2></div><p>Үй рецептері және Ақтауда дәм татуға болатын орындар.</p></div>
+  <div class="food-intro"><img src="assets/food.jpg" alt="Ұлттық тағамдар"><div><span class="eyebrow">ҰЛТТЫҚ ДАСТАРҚАН</span><h3>Әр дәмнің өз әңгімесі бар.</h3><p>Бауырсақ, ет, қуырдақ, сорпа — дастарқан мәдениетінің таныс дәмдері.</p></div></div>
+  <div class="recipe-grid" id="recipe-list"></div>
+  <div class="food-notes" id="food-notes"></div>
+  <div class="dining-head"><div><span class="eyebrow">АҚТАУДА ҚАЙДА ДӘМ ТАТУҒА БОЛАДЫ?</span><h3>Дастарқаннан — мекенжайға.</h3></div></div>
+  <div class="restaurant-grid" id="restaurant-list"></div>
+</section>
+
+<div class="ornament"><img src="assets/ornament-gold.png" alt=""></div>
+<section class="section wrap" id="market">
+  <div class="section-head"><div><span class="eyebrow">04 / ШЕБЕРДЕН — ЕСТЕЛІККЕ</span><h2>Зергерлік өнер және ұлттық сән.</h2></div><p>Ұлттық нақышты өзіңмен бірге алып кет.</p></div>
+  <div class="market-banner"><img src="assets/jewelry-feature.png" alt="Қазақы зергерлік бұйымдар"><div><span class="eyebrow">ЗЕРГЕРЛІК ӨНЕР</span><h3>Бұйымның артында — бір шебердің қолтаңбасы.</h3></div></div>
+  <div class="jewelry-links">
+    <article><h3>Zerger Serikqali</h3><p>@zerger_serikqali</p><div class="contact-row"><a href="https://www.instagram.com/zerger_serikqali/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://go.2gis.com/3WgI2" target="_blank" rel="noopener">📍 2GIS</a></div></article>
+    <article><h3>Zhaqut Kumisteri</h3><p>@zhaqut.kumisteri</p><div class="contact-row"><a href="https://www.instagram.com/zhaqut.kumisteri/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://go.2gis.com/Sg5c7" target="_blank" rel="noopener">📍 2GIS</a></div></article>
+    <article><h3>Qazaq Silver</h3><p>@qazaq_silver</p><div class="contact-row"><a href="https://www.instagram.com/qazaq_silver/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://go.2gis.com/kZ2HR" target="_blank" rel="noopener">📍 2GIS</a></div></article>
+  </div>
+  <div class="tailor-head"><span class="eyebrow">ҰЛТТЫҚ СӘН</span><h3>Тігіншілер мен сән үйлері</h3></div>
+  <div class="maker-grid" id="maker-list"></div>
+</section>
+
+<div class="ornament"><img src="assets/ornament-gold.png" alt=""></div>
+<section class="section wrap tours-section" id="tours">
+  <div class="section-head"><div><span class="eyebrow">05 / МАҢҒЫСТАУ ТУРЛАРЫ</span><h2>Бағытты туроператормен таңда.</h2></div><p>Баға, күн және бос орынды оператордан нақтылаңыз.</p></div>
+  <div class="tour-showcase">
+    <div class="tour-video-wrap"><div class="video-frame tiktok tour-tiktok"><iframe src="https://www.tiktok.com/player/v1/7503259523356888325?autoplay=0&loop=0" title="Маңғыстау туры · TikTok" loading="eager" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="fine">TikTok видеосы осы бетте ойнатылады.</p></div>
+    <div class="operator-grid">
+      <article><h3>Ves Mangystau</h3><p>Маңғыстаудағы жеке және топтық турлар, Бозжыра бағыттары.</p><div class="contact-row"><a href="https://www.instagram.com/vesmangystau" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/77073997735" target="_blank" rel="noopener">WhatsApp · +7 707 399 77 35</a></div></article>
+      <article><h3>Kettik Mangystau</h3><p>Маңғыстау бойынша джип және бірнеше күндік шытырман бағыттар.</p><div class="contact-row"><a href="https://www.instagram.com/kettik_mangystau" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/77010121940" target="_blank" rel="noopener">WhatsApp · +7 701 012 19 40</a></div></article>
+      <article><h3>Mangystau Safari</h3><p>Автобус, джип және көпкүндік турлар; Бозжыра, Қызылқұп, киелі орындар.</p><div class="contact-row"><a href="https://www.instagram.com/mangystau_safari" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/77003626044" target="_blank" rel="noopener">WhatsApp · +7 700 362 60 44</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="activities-section"><div class="wrap section">
+  <div class="section-head"><div><span class="eyebrow">06 / ЭТНО-БЕЛСЕНДІЛІК</span><h2>Сапарды әсерлі ететін тәжірибелер.</h2></div></div>
+  <div class="activity-grid">
+    <article><img src="assets/archery-collage.png" alt="Садақ ату"><div><span class="eyebrow">ДӘСТҮРЛІ ӨНЕР</span><h3>Садақ ату</h3><p>Нысана көздеп, дәстүрлі садақ ату тәжірибесін көріңіз.</p><div class="contact-row"><a href="https://2gis.kz/aktau/search/%D0%A1%D0%B0%D0%B4%D0%B0%D2%9B%20%D0%B0%D1%82%D1%83/firm/70000001090003238/52.859763%2C43.34817?m=52.859763%2C43.34817%2F9.28" target="_blank" rel="noopener">📍 2GIS</a><a href="https://wa.me/77759311200" target="_blank" rel="noopener">WhatsApp · +7 775 931 12 00</a></div></div></article>
+    <article><img src="assets/horse-collage.png" alt="Атқа міну"><div><span class="eyebrow">ДАЛА ТӘЖІРИБЕСІ</span><h3>Атқа міну</h3><p>Маңғыстау даласын ат үстінде сезініп, серуенге алдын ала жазылыңыз.</p><div class="contact-row"><a href="https://go.2gis.com/K7cIc" target="_blank" rel="noopener">📍 2GIS</a><a href="https://www.instagram.com/loshadi_aktau_samal" target="_blank" rel="noopener">Instagram · @loshadi_aktau_samal</a></div></div></article>
+  </div>
+</div></section>
+
+<div class="ornament"><img src="assets/ornament-gold.png" alt=""></div>
+<section class="section wrap" id="planner">
+  <div class="section-head"><div><span class="eyebrow">07 / САПАРДЫ ЖОСПАРЛАУ</span><h2>Дайындық пен бағаны бір жерде тексер.</h2></div></div>
+  <div class="planning-grid">
+    <article class="preparation-card"><h3>Саяхатқа дайынсың ба?</h3><div class="prepare-status"><strong id="ready-score">0%</strong><span>ДАЙЫНДЫҚ ДЕҢГЕЙІ</span></div><progress id="ready-progress" max="8" value="0"></progress><div id="checklist"></div><button class="subtle" id="reset-checklist">Тізімді тазалау</button></article>
+    <article class="tour-calc-card"><img src="assets/tour-collage.png" alt="Маңғыстау турлары"><h3>Тур калькуляторы</h3><form id="tour-calc"><label>Тур<select id="tour-choice"><option value="75000">Джип тур — 75 000 ₸</option><option value="29500">Турбо тур — 29 500 ₸</option><option value="160000">2 күндік тур — 160 000 ₸</option></select></label><label>Адам саны<input id="tour-people" type="number" min="1" max="30" value="1"></label><div class="calc-total"><span>Жалпы баға</span><strong id="tour-total">75 000 ₸</strong></div></form></article>
+  </div>
+</section>
+
+<section class="rating-section" id="rating"><div class="wrap rating-grid"><div><span class="eyebrow">СІЗДІҢ ПІКІРІҢІЗ</span><h2 id="rating-title">Сапар қандай әсер қалдырды?</h2><p>EthnoQazaq сайтына баға беріп, қысқа пікір қалдырыңыз.</p><div class="rating-summary"><strong id="rating-average">—</strong><span id="rating-summary-stars">☆☆☆☆☆</span><small id="rating-count">Әзірге пікір жоқ</small></div><div id="review-list"></div></div><form id="rating-form" class="rating-form"><h3>Сайтты бағалаңыз</h3><div class="star-picker" aria-label="Жұлдызша бағасы"><button type="button" data-star="1">★</button><button type="button" data-star="2">★</button><button type="button" data-star="3">★</button><button type="button" data-star="4">★</button><button type="button" data-star="5">★</button></div><p id="star-hint">Жұлдызшаны таңдаңыз</p><input id="rating-value" type="hidden" value="0"><label>Атыңыз (қаласаңыз)<input id="review-name" placeholder="Мысалы, Адам"></label><label>Пікіріңіз<textarea id="review-text" maxlength="280" placeholder="Сайтта сізге не ұнады? Не қосуға болады?"></textarea></label><small id="review-char-count">0 / 280</small><button class="button" type="submit">Пікір қалдыру ✦</button><p class="fine">Пікір осы құрылғының браузерінде сақталады.</p></form></div></section>
+</main>
+<footer>
+  <a href="#home">Жоғарыға ↑</a>
+  <img class="creator-signature" src="assets/akylbek-ratmir-signature.png" alt="Akylbek Ratmir">
+</footer>
+
+<!-- EthnoQazaq AI assistant -->
+<button id="ai-assistant-launcher" class="ai-assistant-launcher" type="button" aria-label="AI ассистентті ашу" aria-expanded="false">
+  <img src="assets/ai-assistant-emblem.png" alt="">
+  <span>AI</span>
+</button>
+<aside id="ai-assistant-panel" class="ai-assistant-panel" hidden aria-label="EthnoQazaq AI ассистенті">
+  <div class="ai-assistant-head">
+    <div><img src="assets/ai-assistant-emblem.png" alt=""><span><strong>EthnoQazaq AI</strong><small>Сайт бойынша көмекші</small></span></div>
+    <button id="ai-assistant-close" type="button" aria-label="Жабу">×</button>
+  </div>
+  <div id="ai-assistant-messages" class="ai-assistant-messages" aria-live="polite">
+    <div class="ai-msg bot">Сәлем! Маңғыстау, мәдениет, тағам, шеберлер, турлар және сайттағы бейнелер туралы сұраңыз.</div>
+  </div>
+  <div class="ai-quick">
+    <button type="button" data-ai-question="Бозжыра туралы айт">Бозжыра</button>
+    <button type="button" data-ai-question="Тур бағасы қанша?">Тур бағасы</button>
+    <button type="button" data-ai-question="Сайтта қандай видеолар бар?">Видеолар</button>
+  </div>
+  <form id="ai-assistant-form" class="ai-assistant-form">
+    <input id="ai-assistant-input" type="text" autocomplete="off" placeholder="Сұрағыңызды жазыңыз…" aria-label="AI ассистентке сұрақ">
+    <button type="submit" aria-label="Жіберу">↑</button>
+  </form>
+  <p class="ai-assistant-note">Жауаптар сайттағы мәтіндер мен бейне сипаттамаларына сүйенеді.</p>
+</aside>
+
+<audio id="background-music" src="assets/saryzhailau.mp3" preload="metadata" loop></audio><button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">♪ <span id="music-label">Музыканы қосу</span></button>
+<dialog id="detail"><button id="close-modal" class="close" aria-label="Жабу">×</button><div id="modal-content"></div></dialog>
+<div id="toast" class="toast" aria-live="polite"></div>
+</body></html>
