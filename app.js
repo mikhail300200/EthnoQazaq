@@ -28,7 +28,7 @@ function showPlace(id){
       </video>
     </section>`:'';
   const mapUrl=media&&media.mapUrl?media.mapUrl:`https://www.google.com/maps/search/?api=1&query=${p.coords.join(',')}`;
-  openModal(`<span class="eyebrow">${p.district}</span><h2>${p.name}</h2>${video}<img class="modal-image" src="assets/${p.image}" alt="${p.name}"><p>${p.detail}</p><p><a class="button" href="${mapUrl}" target="_blank" rel="noopener">Картадан ашу ↗</a></p>`);
+  openModal(`<span class="eyebrow">${p.district}</span><h2>${p.name}</h2><img class="modal-image" src="assets/${p.image}" alt="${p.name}">${video}<p>${p.detail}</p><p><a class="button" href="${mapUrl}" target="_blank" rel="noopener">Картадан ашу ↗</a></p>`);
   $('detail').scrollTop=0;
 }
 
