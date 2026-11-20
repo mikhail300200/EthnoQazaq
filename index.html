@@ -7,13 +7,31 @@
 <meta name="theme-color" content="#0d4e5f">
 <title>EthnoQazaq — Маңғыстау мұрасы</title>
 <link rel="stylesheet" href="assets/leaflet.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=tiktokfix3">
 <script defer src="assets/leaflet.js"></script>
 <script defer src="content.js"></script>
-<script defer src="app.js"></script>
+<script defer src="app.js?v=tiktokfix3"></script>
 <script defer src="assistant.js"></script>
 <script defer src="music.js"></script>
 <script defer src="i18n.js"></script>
+
+<!-- TikTok көрінісі: бұл стиль index.html ішінде, style.css кэштелсе де қолданылады -->
+<style id="ethno-tiktok-emergency-style">
+.tour-video-wrap .tour-tiktok{width:min(430px,100%);max-height:none;margin:0 auto;display:block}
+.tiktok-widget{box-sizing:border-box;width:min(430px,100%);margin:12px auto 18px;display:flex;flex-direction:column;align-items:stretch;gap:10px}
+.tiktok-widget *{box-sizing:border-box}
+.tiktok-widget .tiktok-poster,.tiktok-widget .tiktok-frame-holder{position:relative;display:block;width:100%;aspect-ratio:9/16;min-height:300px;border-radius:20px;overflow:hidden;background:#101010 center/cover no-repeat;color:#fff}
+.tiktok-widget .tiktok-poster[hidden],.tiktok-widget .tiktok-frame-holder[hidden]{display:none!important}
+.tiktok-widget .tiktok-frame-holder iframe{display:block;width:100%;height:100%;border:0;background:#080808}
+.tiktok-widget .tiktok-brand{position:absolute;right:15px;top:15px;font-weight:800;font-size:19px;color:white;text-shadow:0 2px 8px black}
+.tiktok-widget .tiktok-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:auto;height:auto;max-width:90%;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.85);border-radius:22px;background:rgba(0,0,0,.75);color:#fff;padding:15px 25px;font-size:30px;line-height:1.2;font-family:inherit;text-align:center;cursor:pointer;white-space:nowrap;z-index:2}
+.tiktok-widget .tiktok-play span{font-size:15px;font-weight:700}
+.tiktok-widget .tiktok-play:hover{background:#174b51}
+.tiktok-widget .tiktok-tip{position:absolute;bottom:18px;left:16px;right:16px;text-align:center;font-size:12px;line-height:1.4;color:white;text-shadow:0 1px 4px #000}
+.tiktok-widget .tiktok-external{display:block;width:100%;text-align:center;border-radius:12px;padding:13px 18px;background:#0e494f;color:#fff!important;text-decoration:none;font-weight:700;font-size:15px;line-height:1.4}
+.tiktok-widget .tiktok-external:hover{background:#176d73}
+@media(max-width:700px){.tour-video-wrap .tour-tiktok{width:min(360px,100%)}}
+</style>
 </head>
 <body>
 <a class="skip" href="#atlas">Мазмұнға өту</a>
