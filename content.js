@@ -57,8 +57,8 @@ const locationMedia = {
     mapLabel: 'Бозжыраның шолу алаңы',
     instagramVideo: null,
     instagram: null,
-    tiktokVideo: 'https://www.tiktok.com/@beko360_/video/7460890968070425861',
-    tiktokId: '7460890968070425861',
+   "tiktokVideo": "https://www.tiktok.com/@caspian_holiday/video/7503259523356888325",
+   "tiktokId": "7503259523356888325",
     photos: [{src:'assets/bozzhyra-01.png', alt:'Бозжыраның күн батардағы көрінісі'}],
     visit: 'Бозжырада бірнеше шолу алаңы бар. Таңдаған турдың қай панорамаларға апаратынын оператордан нақтылаңыз.',
     tourIds: ['bozzhyra-bus', 'bozzhyra-jeep']
