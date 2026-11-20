@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="style.css">
 <script defer src="assets/leaflet.js"></script>
 <script defer src="content.js"></script>
-<script defer src="app.js"></script>
+<script defer src="app.js?v=20261120-photo-first-3"></script>
 <script defer src="assistant.js"></script>
 <script defer src="music.js"></script>
 <script defer src="i18n.js"></script>
@@ -142,4 +142,27 @@
 <audio id="background-music" src="assets/saryzhailau.mp3" preload="metadata" loop></audio><button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">♪ <span id="music-label">Музыканы қосу</span></button>
 <dialog id="detail"><button id="close-modal" class="close" aria-label="Жабу">×</button><div id="modal-content"></div></dialog>
 <div id="toast" class="toast" aria-live="polite"></div>
+
+<!-- Map detail: always display the main photograph before its MP4 video. -->
+<script>
+(function () {
+  function correctMapMediaOrder() {
+    const panel = document.getElementById('modal-content');
+    if (!panel) return;
+    const photo = panel.querySelector('img.modal-image');
+    const videoBlock = panel.querySelector('section.place-video-block');
+    if (!photo || !videoBlock || photo.parentNode !== videoBlock.parentNode) return;
+    // Works even when an older cached app.js creates the video first.
+    if (photo.compareDocumentPosition(videoBlock) & Node.DOCUMENT_POSITION_PRECEDING) {
+      videoBlock.parentNode.insertBefore(photo, videoBlock);
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const panel = document.getElementById('modal-content');
+    if (!panel) return;
+    new MutationObserver(correctMapMediaOrder).observe(panel, { childList: true });
+    correctMapMediaOrder();
+  });
+})();
+</script>
 </body></html>
