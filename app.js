@@ -13,7 +13,24 @@ function renderPlaces(){const visible=getVisible();$('result-count').textContent
 function initMap(){if(typeof L==='undefined')return;map=L.map('map',{scrollWheelZoom:false}).setView([43.95,52.5],7);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap'}).addTo(map);markers=L.layerGroup().addTo(map);const refit=()=>{map.invalidateSize(true);map.fitBounds(places.map(p=>p.coords),{padding:[30,30]})};refit();setTimeout(refit,120);setTimeout(refit,500);window.addEventListener('resize',()=>setTimeout(refit,80));if(window.ResizeObserver){new ResizeObserver(()=>map.invalidateSize(false)).observe(document.getElementById('map'))}renderMap(places)}
 function renderMap(list){if(!map||!markers)return;markers.clearLayers();list.forEach((p,i)=>{const icon=L.divIcon({className:'ethno-map-marker',html:`<span>${i+1}</span>`,iconSize:[34,34],iconAnchor:[17,17],tooltipAnchor:[0,-19]});L.marker(p.coords,{icon}).addTo(markers).bindTooltip(p.name,{direction:'top'}).on('click',()=>showPlace(p.id))})}
 function openModal(html){$('modal-content').innerHTML=html;$('detail').showModal()}
-function showPlace(id){const p=places.find(x=>x.id===id);if(!p)return;const media=typeof locationMedia!=='undefined'?locationMedia[id]:null;const video=media&&media.localVideo?`<div class="place-video-block"><h3 class="modal-subheading">Бейне</h3><div class="video-frame tiktok modal-tiktok"><video controls playsinline preload="metadata" poster="${media.localPoster||''}" style="display:block;width:100%;height:100%;object-fit:contain;background:#000" aria-label="${p.name} видеосы"><source src="${media.localVideo}" type="video/mp4">Браузеріңіз MP4 бейнесін қолдамайды.</video></div></div>`:'';const mapUrl=media&&media.mapUrl?media.mapUrl:`https://www.google.com/maps/search/?api=1&query=${p.coords.join(',')}`;openModal(`<span class="eyebrow">${p.district}</span><h2>${p.name}</h2><img class="modal-image" src="assets/${p.image}" alt="${p.name}"><p>${p.detail}</p>${video}<p><a class="button" href="${mapUrl}" target="_blank" rel="noopener">Картадан ашу ↗</a></p>`)}
+function showPlace(id){
+  const p=places.find(x=>x.id===id);
+  if(!p)return;
+  const media=typeof locationMedia!=='undefined'?locationMedia[id]:null;
+  const video=media&&media.localVideo?`
+    <section class="place-video-block" style="margin:12px 0 22px">
+      <h3 class="modal-subheading" style="margin:0 0 12px">${p.name} — бейне</h3>
+      <video controls autoplay muted playsinline preload="metadata" poster="${media.localPoster||''}"
+        style="display:block;aspect-ratio:9/16;width:min(310px,100%);height:auto;max-height:460px;margin:0 auto;border-radius:16px;background:#000;object-fit:contain"
+        aria-label="${p.name} видеосы">
+        <source src="${media.localVideo}" type="video/mp4">
+        Браузеріңіз MP4 видеосын қолдамайды.
+      </video>
+    </section>`:'';
+  const mapUrl=media&&media.mapUrl?media.mapUrl:`https://www.google.com/maps/search/?api=1&query=${p.coords.join(',')}`;
+  openModal(`<span class="eyebrow">${p.district}</span><h2>${p.name}</h2>${video}<img class="modal-image" src="assets/${p.image}" alt="${p.name}"><p>${p.detail}</p><p><a class="button" href="${mapUrl}" target="_blank" rel="noopener">Картадан ашу ↗</a></p>`);
+  $('detail').scrollTop=0;
+}
 
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.filter){filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));renderPlaces()}if(b.dataset.place)showPlace(b.dataset.place);if(b.dataset.recipe)showRecipe(b.dataset.recipe)});
 $('search').addEventListener('input',renderPlaces);$('close-modal').onclick=()=>$('detail').close();$('detail').addEventListener('click',e=>{if(e.target===$('detail'))$('detail').close()});
