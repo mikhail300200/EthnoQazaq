@@ -3,8 +3,8 @@
 const contentCheckedOn = '13.10.2026';
 const locationMedia = {
   sherkala: {
-    localVideo: "assets/videos/sherkala.mp4",
-    localPoster: "assets/videos/sherkala.jpg",
+    localVideo: "assets/sherkala.mp4",
+    localPoster: "assets/sherkala.jpg",
     "photos": [
         {
             "src": "assets/sherkala-01.png",
@@ -15,8 +15,8 @@ const locationMedia = {
     "tiktokId": "7670819027215830292"
 },
   torysh: {
-    localVideo: "assets/videos/torysh.mp4",
-    localPoster: "assets/videos/torysh.jpg",
+    localVideo: "assets/torysh.mp4",
+    localPoster: "assets/torysh.jpg",
     "photos": [
         {
             "src": "assets/torysh-01.png",
@@ -27,8 +27,8 @@ const locationMedia = {
     "tiktokId": "7581472705673776440"
 },
   airakty: {
-    localVideo: "assets/videos/airakty.mp4",
-    localPoster: "assets/videos/airakty.jpg",
+    localVideo: "assets/airakty.mp4",
+    localPoster: "assets/airakty.jpg",
     "photos": [
         {
             "src": "assets/airakty-01.png",
@@ -39,8 +39,8 @@ const locationMedia = {
     "tiktokId": "7493210266314771717"
 },
   beket: {
-    localVideo: "assets/videos/beket.mp4",
-    localPoster: "assets/videos/beket.jpg",
+    localVideo: "assets/beket.mp4",
+    localPoster: "assets/beket.jpg",
     "photos": [
         {
             "src": "assets/beket-01.png",
@@ -51,8 +51,8 @@ const locationMedia = {
     "tiktokId": "7651510174825336084"
 },
   shakpak: {
-    localVideo: "assets/videos/shakpak.mp4",
-    localPoster: "assets/videos/shakpak.jpg",
+    localVideo: "assets/shakpak.mp4",
+    localPoster: "assets/shakpak.jpg",
     "photos": [
         {
             "src": "assets/shakpak-01.png",
@@ -63,8 +63,8 @@ const locationMedia = {
     "tiktokId": "7666748924971060501"
 },
   bozzhyra: {
-    localVideo: "assets/videos/bozzhyra.mp4",
-    localPoster: "assets/videos/bozzhyra.jpg",
+    localVideo: "assets/bozzhyra.mp4",
+    localPoster: "assets/bozzhyra.jpg",
     mapUrl: 'https://2gis.kz/aktau/geo/70030076161824264',
     mapLabel: 'Бозжыраның шолу алаңы',
     instagramVideo: null,
