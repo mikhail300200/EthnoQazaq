@@ -13,7 +13,46 @@ function renderPlaces(){const visible=getVisible();$('result-count').textContent
 function initMap(){if(typeof L==='undefined')return;map=L.map('map',{scrollWheelZoom:false}).setView([43.95,52.5],7);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap'}).addTo(map);markers=L.layerGroup().addTo(map);const refit=()=>{map.invalidateSize(true);map.fitBounds(places.map(p=>p.coords),{padding:[30,30]})};refit();setTimeout(refit,120);setTimeout(refit,500);window.addEventListener('resize',()=>setTimeout(refit,80));if(window.ResizeObserver){new ResizeObserver(()=>map.invalidateSize(false)).observe(document.getElementById('map'))}renderMap(places)}
 function renderMap(list){if(!map||!markers)return;markers.clearLayers();list.forEach((p,i)=>{const icon=L.divIcon({className:'ethno-map-marker',html:`<span>${i+1}</span>`,iconSize:[34,34],iconAnchor:[17,17],tooltipAnchor:[0,-19]});L.marker(p.coords,{icon}).addTo(markers).bindTooltip(p.name,{direction:'top'}).on('click',()=>showPlace(p.id))})}
 function openModal(html){$('modal-content').innerHTML=html;$('detail').showModal()}
-function showPlace(id){const p=places.find(x=>x.id===id);if(!p)return;const media=typeof locationMedia!=='undefined'?locationMedia[id]:null;const video=media&&media.tiktokId?`<div class="place-video-block"><h3 class="modal-subheading">Бейне</h3><div class="video-frame tiktok modal-tiktok"><iframe src="https://www.tiktok.com/player/v1/${media.tiktokId}?autoplay=0&loop=0" title="${p.name} видеосы" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>${media.tiktokVideo?`<p class="fine"><a href="${media.tiktokVideo}" target="_blank" rel="noopener">TikTok-та ашу ↗</a></p>`:''}</div>`:'';const mapUrl=media&&media.mapUrl?media.mapUrl:`https://www.google.com/maps/search/?api=1&query=${p.coords.join(',')}`;openModal(`<span class="eyebrow">${p.district}</span><h2>${p.name}</h2><img class="modal-image" src="assets/${p.image}" alt="${p.name}"><p>${p.detail}</p>${video}<p><a class="button" href="${mapUrl}" target="_blank" rel="noopener">Картадан ашу ↗</a></p>`)}
+// TikTok бейнесін қолданушы басқан кезде ғана жүктейміз.
+// Кейбір браузерлерде TikTok iframe-ті бұғаттайды: түпнұсқа сілтеме әрқашан қолжетімді.
+function tiktokCard(videoId, videoUrl, title, poster) {
+  if (!/^\d{15,22}$/.test(String(videoId))) return '';
+  const url = /^https:\/\/www\.tiktok\.com\/@[\w.]+\/video\/\d+$/.test(videoUrl || '')
+    ? videoUrl : `https://www.tiktok.com/@tiktok/video/${videoId}`;
+  const safeTitle = String(title || 'TikTok бейнесі').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+  const safePoster = String(poster || 'assets/bozzhyra-01.png').replace(/"/g,'&quot;');
+  return `<div class="tiktok-widget" data-tiktok-id="${videoId}">
+    <div class="tiktok-poster" style="background-image:linear-gradient(0deg,rgba(0,0,0,.67),rgba(0,0,0,.13)),url('${safePoster}')">
+      <span class="tiktok-brand">♪ TikTok</span>
+      <button type="button" class="tiktok-play" data-tiktok-play aria-label="${safeTitle} — видеоны сайтта көру">▶<span>Видеоны көру</span></button>
+      <span class="tiktok-tip">TikTok плеері ашылмаса, төмендегі сілтемені пайдаланыңыз</span>
+    </div>
+    <div class="tiktok-frame-holder" hidden></div>
+    <a class="tiktok-external" href="${url}" target="_blank" rel="noopener noreferrer">↗ TikTok-та ашу</a>
+  </div>`;
+}
+
+document.addEventListener('click', event => {
+  const button = event.target.closest('[data-tiktok-play]');
+  if (!button) return;
+  const widget = button.closest('[data-tiktok-id]');
+  const id = widget?.dataset.tiktokId;
+  if (!/^\d{15,22}$/.test(id || '')) return;
+  const holder = widget.querySelector('.tiktok-frame-holder');
+  widget.querySelector('.tiktok-poster').hidden = true;
+  holder.hidden = false;
+  // embed/v2 — TikTok-тың классикалық ендіру беті, жай video URL емес.
+  const frame = document.createElement('iframe');
+  frame.src = `https://www.tiktok.com/embed/v2/${id}`;
+  frame.title = 'TikTok бейнесі';
+  frame.loading = 'eager';
+  frame.referrerPolicy = 'strict-origin-when-cross-origin';
+  frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  frame.allowFullscreen = true;
+  holder.replaceChildren(frame);
+});
+
+function showPlace(id){const p=places.find(x=>x.id===id);if(!p)return;const media=typeof locationMedia!=='undefined'?locationMedia[id]:null;const video=media&&media.tiktokId?`<div class="place-video-block"><h3 class="modal-subheading">Бейне</h3>${tiktokCard(media.tiktokId,media.tiktokVideo,p.name,`assets/${p.image}`)}</div>`:'';const mapUrl=media&&media.mapUrl?media.mapUrl:`https://www.google.com/maps/search/?api=1&query=${p.coords.join(',')}`;openModal(`<span class="eyebrow">${p.district}</span><h2>${p.name}</h2><img class="modal-image" src="assets/${p.image}" alt="${p.name}"><p>${p.detail}</p>${video}<p><a class="button" href="${mapUrl}" target="_blank" rel="noopener">Картадан ашу ↗</a></p>`)}
 
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.filter){filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));renderPlaces()}if(b.dataset.place)showPlace(b.dataset.place);if(b.dataset.recipe)showRecipe(b.dataset.recipe)});
 $('search').addEventListener('input',renderPlaces);$('close-modal').onclick=()=>$('detail').close();$('detail').addEventListener('click',e=>{if(e.target===$('detail'))$('detail').close()});
